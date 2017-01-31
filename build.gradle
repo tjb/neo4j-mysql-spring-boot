@@ -1,0 +1,54 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+	}
+	dependencies {
+        classpath "mysql:mysql-connector-java:6.0.4"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+	}
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'demo'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+}
+
+
+dependencies {
+    compile "mysql:mysql-connector-java:6.0.4"
+    compile "org.springframework.boot:spring-boot-starter-jdbc"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.data:spring-data-neo4j-rest:3.4.6.RELEASE"
+    compile "org.springframework.data:spring-data-neo4j:4.1.6.RELEASE"
+    compile "org.neo4j:neo4j-ogm-core:2.0.6"
+    compile "org.neo4j:neo4j-ogm-http-driver:2.0.6"
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRepackage {
+    mainClass = "com.example.DemoApplication"
+}
+
+springBoot {
+    mainClass = "com.example.DemoApplication"
+    executable = true
+}

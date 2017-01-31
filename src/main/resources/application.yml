@@ -1,0 +1,12 @@
+spring:
+  data:
+    neo4j:
+      username: neo4j
+      password: root
+      session:
+        scope: session
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false
+    username: root
+    password:
+    platform: mysql
